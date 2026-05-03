@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
     <nav class="navbar minimalist-nav">
         <div class="container nav-container">
             <div class="nav-wrapper nav-wrapper-flex">
@@ -121,8 +122,13 @@
     <section class="diet-section">
         <div class="container">
             <h2>Customized Diet Plans</h2>
+            <div class="diet-tabs">
+                <button class="diet-tab active" data-plan="loss">🔥 Weight Loss</button>
+                <button class="diet-tab" data-plan="gain">💪 Muscle Gain</button>
+                <button class="diet-tab" data-plan="maintain">⚖️ Maintenance</button>
+            </div>
             <div class="diet-cards">
-                <div class="diet-card">
+                <div class="diet-card" data-plan="loss">
                     <h3>🔥 Weight Loss Plan</h3>
                     <p><strong>Goal:</strong> Reduce body fat while maintaining muscle</p>
                     <p><strong>Calorie Deficit:</strong> 500 calories below maintenance</p>
@@ -163,7 +169,7 @@
                     </div>
                     <p class="mt-1"><strong>Daily Total: ~1,500 calories</strong></p>
                 </div>
-                <div class="diet-card">
+                <div class="diet-card" data-plan="gain">
                     <h3>💪 Muscle Gain Plan</h3>
                     <p><strong>Goal:</strong> Build lean muscle mass</p>
                     <p><strong>Calorie Surplus:</strong> 300-500 calories above maintenance</p>
@@ -204,7 +210,7 @@
                     </div>
                     <p class="mt-1"><strong>Daily Total: ~2,400 calories</strong></p>
                 </div>
-                <div class="diet-card">
+                <div class="diet-card" data-plan="maintain">
                     <h3>⚖️ Maintenance Plan</h3>
                     <p><strong>Goal:</strong> Maintain current body composition</p>
                     <p><strong>Calorie Level:</strong> At maintenance</p>

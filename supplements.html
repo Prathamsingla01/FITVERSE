@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
     <nav class="navbar minimalist-nav">
         <div class="container nav-container">
             <div class="nav-wrapper nav-wrapper-flex">
@@ -301,6 +302,31 @@
                         <p class="mt-1"><strong>Benefits:</strong> Nutritional insurance, better health,
                             improved recovery</p>
                     </div>
+                </div>
+                <div class="supplement-card">
+                  <div class="supplement-header"><h3>⏰ Set a Reminder</h3></div>
+                  <div class="supplement-body">
+                    <p>Save a personal reminder for your supplement schedule.</p>
+                    <div class="reminder-form">
+                      <select class="reminder-select" id="reminderSupplement">
+                        <option value="">Choose supplement...</option>
+                        <option value="Whey Protein">Whey Protein</option>
+                        <option value="Creatine">Creatine</option>
+                        <option value="Pre-Workout">Pre-Workout</option>
+                        <option value="BCAAs">BCAAs</option>
+                        <option value="Multivitamin">Multivitamin</option>
+                      </select>
+                      <select class="reminder-select" id="reminderTime">
+                        <option value="Morning">Morning</option>
+                        <option value="Pre-Workout">Pre-Workout</option>
+                        <option value="Post-Workout">Post-Workout</option>
+                        <option value="Evening">Evening</option>
+                        <option value="Before Bed">Before Bed</option>
+                      </select>
+                      <button class="btn btn-primary mt-1-5" id="saveReminderBtn">Save Reminder</button>
+                    </div>
+                    <div class="saved-reminders" id="savedReminders"></div>
+                  </div>
                 </div>
             </div>
             <h2 class="mt-4">Recommended Supplement Stacks</h2>

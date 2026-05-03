@@ -9,6 +9,7 @@
 </head>
 
 <body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
     <nav class="navbar minimalist-nav">
         <div class="container nav-container">
             <div class="nav-wrapper nav-wrapper-flex">
@@ -165,10 +166,20 @@
     <section class="workout-section">
         <div class="container">
             <h2>Weekly Workout Routines</h2>
+            <div class="filter-bar">
+                <button class="filter-btn active" data-filter="all">All</button>
+                <button class="filter-btn" data-filter="beginner">Beginner</button>
+                <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+                <button class="filter-btn" data-filter="advanced">Advanced</button>
+                <button class="filter-btn" data-filter="chest">Chest</button>
+                <button class="filter-btn" data-filter="back">Back</button>
+                <button class="filter-btn" data-filter="legs">Legs</button>
+            </div>
             <div class="routine-cards">
-                <div class="routine-card">
+                <div class="routine-card" data-category="intermediate chest">
                     <div class="routine-header">
                         <h3>Monday - Chest & Triceps</h3>
+                        <button class="fav-btn" data-workout="Monday - Chest & Triceps" title="Add to Favorites">♡</button>
                     </div>
                     <div class="routine-body">
                         <p><strong>Focus:</strong> Upper body pushing movements</p>
@@ -184,9 +195,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="routine-card">
+                <div class="routine-card" data-category="intermediate back">
                     <div class="routine-header">
                         <h3>Tuesday - Back & Biceps</h3>
+                        <button class="fav-btn" data-workout="Tuesday - Back & Biceps" title="Add to Favorites">♡</button>
                     </div>
                     <div class="routine-body">
                         <p><strong>Focus:</strong> Upper body pulling movements</p>
@@ -202,9 +214,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="routine-card">
+                <div class="routine-card" data-category="advanced legs">
                     <div class="routine-header">
                         <h3>Wednesday - Legs & Abs</h3>
+                        <button class="fav-btn" data-workout="Wednesday - Legs & Abs" title="Add to Favorites">♡</button>
                     </div>
                     <div class="routine-body">
                         <p><strong>Focus:</strong> Lower body strength and core</p>
@@ -220,9 +233,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="routine-card">
+                <div class="routine-card" data-category="intermediate chest">
                     <div class="routine-header">
                         <h3>Thursday - Shoulders & Arms</h3>
+                        <button class="fav-btn" data-workout="Thursday - Shoulders & Arms" title="Add to Favorites">♡</button>
                     </div>
                     <div class="routine-body">
                         <p><strong>Focus:</strong> Deltoids and arm isolation</p>
@@ -238,9 +252,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="routine-card">
+                <div class="routine-card" data-category="intermediate back legs">
                     <div class="routine-header">
                         <h3>Friday - Full Body</h3>
+                        <button class="fav-btn" data-workout="Friday - Full Body" title="Add to Favorites">♡</button>
                     </div>
                     <div class="routine-body">
                         <p><strong>Focus:</strong> Compound movements</p>
@@ -256,9 +271,10 @@
                         </ul>
                     </div>
                 </div>
-                <div class="routine-card">
+                <div class="routine-card" data-category="beginner">
                     <div class="routine-header">
                         <h3>Saturday - Cardio & Core</h3>
+                        <button class="fav-btn" data-workout="Saturday - Cardio & Core" title="Add to Favorites">♡</button>
                     </div>
                     <div class="routine-body">
                         <p><strong>Focus:</strong> Cardiovascular health and core strength</p>

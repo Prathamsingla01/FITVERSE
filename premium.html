@@ -12,6 +12,7 @@
 </head>
 
 <body>
+    <div class="scroll-progress-bar" id="scrollProgressBar"></div>
     <nav class="navbar minimalist-nav">
         <div class="container nav-container">
             <div class="nav-wrapper nav-wrapper-flex">
@@ -150,10 +151,18 @@
     </section>
     <section class="premium-pricing">
         <div class="container">
+            <div class="billing-toggle">
+                <span>Monthly</span>
+                <label class="switch">
+                    <input type="checkbox" id="billingToggle">
+                    <span class="slider"></span>
+                </label>
+                <span>Yearly <span class="discount-badge">(Save 20%)</span></span>
+            </div>
             <div class="pricing-box">
                 <h2 class="elite-plan-title">FitVerse Elite</h2>
                 <div class="pricing-amount elite-pricing-flex">
-                    $19.99<span>/mo</span> <span class="elite-pricing-subtext">(₹1,659/mo)</span>
+                    $<span class="price-display" data-monthly="19.99" data-yearly="191.90">19.99</span><span>/mo</span> <span class="elite-pricing-subtext">(₹1,659/mo)</span>
                 </div>
                 <ul class="elite-features-list">
                     <li class="elite-feature-item">✔️ 3D Anatomical Workout Viewer</li>

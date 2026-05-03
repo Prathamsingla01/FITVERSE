@@ -791,4 +791,272 @@ document.addEventListener('DOMContentLoaded', function() {
             workoutSection.insertAdjacentHTML('beforebegin', demoHTML);
         }
     }
+    // --- Prompt 2 Global Features ---
+    
+    // Scroll Progress
+    var scrollBar = document.getElementById('scrollProgressBar');
+    if (scrollBar) {
+        window.addEventListener('scroll', function() {
+            var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            var scrollHeight = document.documentElement.scrollHeight || document.body.scrollHeight;
+            var clientHeight = document.documentElement.clientHeight || window.innerHeight;
+            var scrolled = (scrollTop / (scrollHeight - clientHeight)) * 100;
+            scrollBar.style.width = scrolled + '%';
+        });
+    }
+
+    // Button Ripple Effect
+    var buttons = document.querySelectorAll('.btn');
+    buttons.forEach(function(btn) {
+        btn.addEventListener('click', function(e) {
+            var x = e.clientX - e.target.getBoundingClientRect().left;
+            var y = e.clientY - e.target.getBoundingClientRect().top;
+            var ripple = document.createElement('span');
+            ripple.className = 'ripple';
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            this.appendChild(ripple);
+            setTimeout(function() {
+                ripple.remove();
+            }, 600);
+        });
+    });
+
+    // --- Prompt 2 Page Specific Features ---
+
+    // Index: Daily Tip
+    var dailyTipText = document.getElementById('dailyTipText');
+    if (dailyTipText) {
+        var tips = [
+            "Drink at least 3 liters of water daily.",
+            "Protein is key for muscle recovery.",
+            "Never skip warm-up exercises.",
+            "Consistency beats intensity.",
+            "Sleep 7-8 hours for optimal results."
+        ];
+        var randomTip = tips[Math.floor(Math.random() * tips.length)];
+        dailyTipText.textContent = randomTip;
+    }
+
+    // Index: Stat Bars Animation
+    var statBars = document.querySelectorAll('.stat-bar-fill');
+    if (statBars.length > 0) {
+        setTimeout(function() {
+            statBars.forEach(function(bar) {
+                var w = bar.getAttribute('data-width');
+                if (w) bar.style.width = w + '%';
+            });
+        }, 500);
+    }
+
+    // Workouts: Filter
+    var filterBtns = document.querySelectorAll('.filter-btn');
+    if (filterBtns.length > 0) {
+        filterBtns.forEach(function(btn) {
+            btn.addEventListener('click', function() {
+                filterBtns.forEach(function(b) { b.classList.remove('active'); });
+                this.classList.add('active');
+                var filter = this.getAttribute('data-filter');
+                var cards = document.querySelectorAll('.routine-card');
+                cards.forEach(function(card) {
+                    var cat = card.getAttribute('data-category');
+                    if (filter === 'all' || (cat && cat.includes(filter))) {
+                        card.style.display = 'block';
+                    } else if (cat) {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+    }
+
+    // Workouts: Favorites
+    var favBtns = document.querySelectorAll('.fav-btn');
+    if (favBtns.length > 0) {
+        var savedFavs = JSON.parse(localStorage.getItem('fitverse_favs')) || [];
+        favBtns.forEach(function(btn) {
+            var workout = btn.getAttribute('data-workout');
+            if (savedFavs.includes(workout)) btn.classList.add('active');
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                if (this.classList.contains('active')) {
+                    savedFavs.push(workout);
+                    showToast(workout + ' added to favorites!');
+                } else {
+                    savedFavs = savedFavs.filter(function(f) { return f !== workout; });
+                    showToast(workout + ' removed from favorites.');
+                }
+                localStorage.setItem('fitverse_favs', JSON.stringify(savedFavs));
+            });
+        });
+    }
+
+    // Diet: Tabs
+    var dietTabs = document.querySelectorAll('.diet-tab');
+    if (dietTabs.length > 0) {
+        dietTabs.forEach(function(tab) {
+            tab.addEventListener('click', function() {
+                dietTabs.forEach(function(t) { t.classList.remove('active'); });
+                this.classList.add('active');
+                var plan = this.getAttribute('data-plan');
+                var cards = document.querySelectorAll('.diet-card[data-plan]');
+                cards.forEach(function(card) {
+                    if (card.getAttribute('data-plan') === plan) {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        });
+        // trigger initial click on first tab to hide others
+        if (dietTabs[0]) {
+             var firstPlan = dietTabs[0].getAttribute('data-plan');
+             var allCards = document.querySelectorAll('.diet-card[data-plan]');
+             allCards.forEach(function(card) {
+                 if (card.getAttribute('data-plan') !== firstPlan) card.style.display = 'none';
+             });
+        }
+    }
+
+    // Supplements: Reminders
+    var saveReminderBtn = document.getElementById('saveReminderBtn');
+    if (saveReminderBtn) {
+        var suppSelect = document.getElementById('reminderSupplement');
+        var timeSelect = document.getElementById('reminderTime');
+        var remindersContainer = document.getElementById('savedReminders');
+        var reminders = JSON.parse(localStorage.getItem('fitverse_reminders')) || [];
+
+        function renderReminders() {
+            remindersContainer.innerHTML = '';
+            reminders.forEach(function(rem, idx) {
+                var item = document.createElement('div');
+                item.className = 'reminder-item';
+                item.innerHTML = '<span><strong>' + rem.supp + '</strong> - ' + rem.time + '</span> <button class="del-reminder" data-idx="' + idx + '">✕</button>';
+                remindersContainer.appendChild(item);
+            });
+            document.querySelectorAll('.del-reminder').forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    var i = this.getAttribute('data-idx');
+                    reminders.splice(i, 1);
+                    localStorage.setItem('fitverse_reminders', JSON.stringify(reminders));
+                    renderReminders();
+                });
+            });
+        }
+        renderReminders();
+
+        saveReminderBtn.addEventListener('click', function() {
+            if (suppSelect.value && timeSelect.value) {
+                reminders.push({supp: suppSelect.value, time: timeSelect.value});
+                localStorage.setItem('fitverse_reminders', JSON.stringify(reminders));
+                renderReminders();
+                showToast('Reminder saved!');
+                suppSelect.value = '';
+            } else {
+                showToast('Please select both options.');
+            }
+        });
+    }
+
+    // Shop: Live Search
+    var productSearchInput = document.getElementById('productSearchInput');
+    if (productSearchInput) {
+        productSearchInput.addEventListener('keyup', function() {
+            var val = this.value.toLowerCase();
+            var cards = document.querySelectorAll('.product-card');
+            cards.forEach(function(card) {
+                var title = card.querySelector('.product-title').textContent.toLowerCase();
+                if (title.includes(val)) {
+                    card.style.display = 'flex';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    }
+
+    // Premium: Billing Toggle
+    var billingToggle = document.getElementById('billingToggle');
+    if (billingToggle) {
+        billingToggle.addEventListener('change', function() {
+            var isYearly = this.checked;
+            var priceDisplays = document.querySelectorAll('.price-display');
+            priceDisplays.forEach(function(el) {
+                if (isYearly) {
+                    el.textContent = el.getAttribute('data-yearly');
+                } else {
+                    el.textContent = el.getAttribute('data-monthly');
+                }
+            });
+            var subs = document.querySelectorAll('.elite-pricing-subtext');
+            subs.forEach(function(sub) {
+                if(isYearly) {
+                    sub.textContent = '(₹15,900/yr)';
+                } else {
+                    sub.textContent = '(₹1,659/mo)';
+                }
+            });
+        });
+    }
+
+    // Login: Password Strength
+    var passInput = document.getElementById('password');
+    if (passInput) {
+        var strBar = document.getElementById('strengthBar');
+        var strText = document.getElementById('strengthText');
+        passInput.addEventListener('input', function() {
+            var val = this.value;
+            strBar.className = 'strength-bar';
+            if (val.length === 0) {
+                strBar.style.width = '0';
+                strText.textContent = '';
+            } else if (val.length < 6) {
+                strBar.classList.add('strength-weak');
+                strText.textContent = 'Weak';
+            } else if (val.length < 10) {
+                strBar.classList.add('strength-medium');
+                strText.textContent = 'Medium';
+            } else {
+                strBar.classList.add('strength-strong');
+                strText.textContent = 'Strong';
+            }
+        });
+    }
+
+    // Transformation: 90-Day Grid
+    var progressGrid = document.getElementById('progressGrid');
+    if (progressGrid) {
+        var completedDays = JSON.parse(localStorage.getItem('fitverse_90days')) || [];
+        for (var i = 1; i <= 90; i++) {
+            var dayBtn = document.createElement('div');
+            dayBtn.className = 'grid-day';
+            dayBtn.textContent = i;
+            dayBtn.setAttribute('data-day', i);
+            if (completedDays.includes(i.toString())) {
+                dayBtn.classList.add('completed');
+            }
+            dayBtn.addEventListener('click', function() {
+                var d = this.getAttribute('data-day');
+                this.classList.toggle('completed');
+                if (this.classList.contains('completed')) {
+                    if (!completedDays.includes(d)) completedDays.push(d);
+                } else {
+                    completedDays = completedDays.filter(function(item) { return item !== d; });
+                }
+                localStorage.setItem('fitverse_90days', JSON.stringify(completedDays));
+            });
+            progressGrid.appendChild(dayBtn);
+        }
+        var resetGridBtn = document.getElementById('resetGridBtn');
+        if (resetGridBtn) {
+            resetGridBtn.addEventListener('click', function() {
+                localStorage.removeItem('fitverse_90days');
+                completedDays = [];
+                document.querySelectorAll('.grid-day').forEach(function(btn) {
+                    btn.classList.remove('completed');
+                });
+            });
+        }
+    }
 });

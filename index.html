@@ -10,10 +10,10 @@
 
 <body>
     <nav class="navbar minimalist-nav">
-        <div class="container" style="max-width: 1600px; padding: 0;">
-            <div class="nav-wrapper" style="display:flex; justify-content:space-between; align-items:center;">
-                <div class="nav-left" style="display:flex; align-items:center; gap: 1rem;">
-                    <button class="menu-toggle-btn" id="desktopMenuBtn" style="margin: 0;">
+        <div class="container nav-container">
+            <div class="nav-wrapper nav-wrapper-flex">
+                <div class="nav-left nav-left-flex">
+                    <button class="menu-toggle-btn reset-margin" id="desktopMenuBtn">
                         <span class="hamburger-icon" aria-hidden="true">
                             <span></span><span></span><span></span>
                         </span>
@@ -26,12 +26,12 @@
                     </div>
                 </div>
                 <div class="nav-actions">
-                    <form class="nav-search-form" style="position:relative; margin-right:1rem; display:flex; align-items:center;" onsubmit="event.preventDefault(); window.location.href='workouts.html';">
+                    <form class="nav-search-form nav-search-flex" onsubmit="event.preventDefault(); window.location.href='workouts.html';">
                         <input type="text" placeholder="Search..." class="nav-search-input">
-                        <span style="position:absolute; right:10px; cursor:pointer; opacity:0.5;">🔍</span>
+                        <span class="nav-search-icon">🔍</span>
                     </form>
-                    <button id="themeToggleBtn" class="action-icon" style="margin-right: 1rem;" title="Toggle Theme">☀️</button>
-                    <a href="shop.html" id="navCartBtn" class="action-icon" style="margin-right: 1.5rem;" title="Cart">🛒<span class="cart-badge" id="navCartBadge">0</span></a>
+                    <button id="themeToggleBtn" class="action-icon action-icon-theme" title="Toggle Theme">☀️</button>
+                    <a href="shop.html" id="navCartBtn" class="action-icon action-icon-cart" title="Cart">🛒<span class="cart-badge" id="navCartBadge">0</span></a>
                     <a href="login.html" class="btn-auth login" id="navLoginBtn">Login</a>
                     <a href="login.html" class="btn-auth signup" id="navSignupBtn">Sign Up</a>
                 </div>
@@ -42,9 +42,9 @@
         <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
         <div class="sleek-sidebar">
             <div class="sidebar-header">
-                <a href="index.html" class="brand-link" style="margin-bottom: 0;">
-                    <img src="logo.svg" alt="FitVerse" class="brand-logo" style="width: 32px; height: 32px;">
-                    <span class="brand-name" style="font-size: 1.5rem;">FITVERSE</span>
+                <a href="index.html" class="brand-link brand-link-sidebar">
+                    <img src="logo.svg" alt="FitVerse" class="brand-logo brand-logo-sidebar">
+                    <span class="brand-name brand-name-sidebar">FITVERSE</span>
                 </a>
                 <button class="close-menu-btn" id="closeMenuBtn">✕</button>
             </div>
@@ -87,11 +87,11 @@
                         </a>
                     </li>
                 </ul>
-                <h4 class="sidebar-subtitle" style="margin-top: 2rem;">EXCLUSIVE</h4>
+                <h4 class="sidebar-subtitle sidebar-subtitle-exclusive">EXCLUSIVE</h4>
                 <ul class="sleek-nav-links">
                     <li>
                         <a href="premium.html" class="premium-link">
-                            <span class="nav-icon" style="color: #FFD700;">⭐</span>
+                            <span class="nav-icon nav-icon-premium">⭐</span>
                             Premium Hub
                         </a>
                     </li>
@@ -99,43 +99,43 @@
             </div>
             <div class="sidebar-footer">
                 <div class="quick-add">
-                    <span style="font-size: 0.8rem; color: var(--text-muted); font-weight: 600; letter-spacing: 1px;">QUICK-ADD HYDRATION</span>
-                    <div style="display: flex; align-items: center; gap: 1rem; margin-top: 0.5rem; background: rgba(0,0,0,0.2); padding: 0.5rem; border-radius: 8px;">
-                        <button style="background: transparent; border: none; color: var(--text-light); font-size: 1.2rem; cursor: pointer;">-</button>
-                        <span style="font-weight: 800; font-size: 1.1rem;">0</span>
-                        <button style="background: transparent; border: none; color: var(--text-light); font-size: 1.2rem; cursor: pointer;">+</button>
+                    <span class="hydration-title">QUICK-ADD HYDRATION</span>
+                    <div class="hydration-controls">
+                        <button class="hydration-btn">-</button>
+                        <span class="hydration-count">0</span>
+                        <button class="hydration-btn">+</button>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <section class="hero" style="min-height: 90vh; display: flex; align-items: center; padding: 0; position: relative; overflow: hidden;">
-        <div class="container" style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; position: relative; z-index: 10;">
-            <div class="hero-text" style="text-align: left;">
-                <div class="badge" style="display: inline-block; padding: 0.5rem 1rem; border-radius: 50px; background: rgba(255,51,102,0.1); color: var(--primary-color); border: 1px solid var(--primary-color); font-weight: 600; margin-bottom: 1.5rem; letter-spacing: 1px; text-transform: uppercase; font-size: 0.8rem; box-shadow: 0 0 20px rgba(255,51,102,0.2);">
+    <section class="hero hero-section">
+        <div class="container hero-grid">
+            <div class="hero-text hero-text-container">
+                <div class="badge hero-badge">
                     🚀 The Next Generation of Fitness
                 </div>
-                <h1 style="font-size: clamp(3rem, 5vw, 5rem); line-height: 1.1; margin-bottom: 1.5rem; font-weight: 800; letter-spacing: -2px;">
+                <h1 class="hero-title">
                     Forge Your <br>
-                    <span style="background: var(--gradient-1); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent;">Ultimate</span>
+                    <span class="text-gradient">Ultimate</span>
                     Body
                 </h1>
-                <p style="font-size: 1.25rem; color: var(--text-muted); margin-bottom: 2.5rem; max-width: 90%;">
+                <p class="hero-desc">
                     Experience the most powerful fitness ecosystem. Personalized workouts, precision diet tracking, and
                     elite premium coaching tools.
                 </p>
-                <div class="hero-buttons" style="justify-content: flex-start;">
-                    <a href="workouts.html" class="btn btn-primary" style="padding: 1.2rem 2.5rem; font-size: 1.1rem; border-radius: 50px;">Start Training</a>
-                    <a href="premium.html" class="btn btn-secondary" style="padding: 1.2rem 2.5rem; font-size: 1.1rem; border-radius: 50px; border-color: #FFD700; color: #FFD700; background: rgba(255,215,0,0.05);">Explore
+                <div class="hero-buttons hero-btns-container">
+                    <a href="workouts.html" class="btn btn-primary hero-btn-primary">Start Training</a>
+                    <a href="premium.html" class="btn btn-secondary hero-btn-secondary">Explore
                         Elite ⭐</a>
                 </div>
             </div>
-            <div class="hero-visual" style="position: relative; height: 600px; width: 100%;">
-                <div style="position: absolute; top: 5%; right: 5%; width: 320px; height: 450px; border-radius: 30px; background: url('https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; box-shadow: 0 30px 60px rgba(0,0,0,0.6); z-index: 2; border: 1px solid rgba(255,255,255,0.1); transition: transform 0.5s;">
+            <div class="hero-visual hero-visual-container">
+                <div class="hero-img-1">
                 </div>
-                <div style="position: absolute; bottom: 10%; left: 0; width: 280px; height: 380px; border-radius: 30px; background: url('https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover; box-shadow: 0 30px 60px rgba(0,0,0,0.6); z-index: 3; border: 1px solid rgba(255,255,255,0.1); transform: translateY(-30px); transition: transform 0.5s;">
+                <div class="hero-img-2">
                 </div>
-                <div style="position: absolute; top: 50%; left: 50%; width: 500px; height: 500px; background: var(--primary-color); filter: blur(120px); opacity: 0.3; border-radius: 50%; z-index: 1; transform: translate(-50%, -50%); pointer-events: none;">
+                <div class="hero-glow">
                 </div>
             </div>
         </div>
@@ -172,18 +172,21 @@
     </section>
     <section class="bmi-section fade-in">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 3rem;">Calculate Your Metrics</h2>
+            <h2 class="section-title-center">Calculate Your Metrics</h2>
             <div class="bmi-widget">
-                <p style="color: var(--text-muted); margin-bottom: 2rem; max-width: 600px; margin-left: auto; margin-right: auto;">Discover your Body Mass Index (BMI) and Total Daily Energy Expenditure (TDEE) to align your nutrition with your ultimate goals.</p>
+                <p class="bmi-desc">Discover your Body Mass Index (BMI) and Total Daily Energy Expenditure (TDEE) to align your nutrition with your ultimate goals.</p>
                 <form id="bmiForm" class="bmi-form">
                     <div class="bmi-inputs">
-                        <input type="number" id="bmiAge" class="bmi-input" placeholder="Age" required min="15" max="100">
+                        <input type="number" id="bmiAge" class="bmi-input" placeholder="Age" required min="15"
+                            max="100">
                         <select id="bmiGender" class="bmi-input" required>
                             <option value="male">Male</option>
                             <option value="female">Female</option>
                         </select>
-                        <input type="number" id="bmiHeight" class="bmi-input" placeholder="Height (cm)" required min="100" max="250">
-                        <input type="number" id="bmiWeight" class="bmi-input" placeholder="Weight (kg)" required min="30" max="300">
+                        <input type="number" id="bmiHeight" class="bmi-input" placeholder="Height (cm)" required
+                            min="100" max="250">
+                        <input type="number" id="bmiWeight" class="bmi-input" placeholder="Weight (kg)" required
+                            min="30" max="300">
                         <select id="bmiActivity" class="bmi-input" required>
                             <option value="1.2">Sedentary</option>
                             <option value="1.375">Light Activity</option>
@@ -192,22 +195,22 @@
                             <option value="1.9">Athlete</option>
                         </select>
                     </div>
-                    <button type="submit" class="btn btn-primary" style="padding: 1rem 3rem; font-size: 1.1rem; border-radius: 50px; border: none; cursor: pointer; background: var(--gradient-1); color: white; transition: transform 0.2s ease;">Calculate Stats</button>
-                </form>
-                <div id="bmiResults" class="bmi-results" style="display: none; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1);">
-                    <div style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 2rem;">
-                        <div>
-                            <div style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Your BMI</div>
-                            <div id="bmiValue" class="bmi-result">0.0</div>
-                            <div id="bmiStatus" style="font-weight: 600; margin-top: 0.5rem; text-transform: uppercase;">-</div>
-                        </div>
-                        <div>
-                            <div style="font-size: 0.9rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px;">Your TDEE</div>
-                            <div class="bmi-result"><span id="tdeeValue">0</span> <span style="font-size: 1rem; color: var(--text-muted);">kcal/day</span></div>
-                            <div style="color: var(--primary-color); font-weight: 600; margin-top: 0.5rem; text-transform: uppercase;">Maintenance Calories</div>
+                    <button type="submit" class="btn btn-primary bmi-submit-btn">Calculate Stats</button>
+                    <div id="bmiResults" class="bmi-results bmi-results-container">
+                        <div class="bmi-results-grid">
+                            <div>
+                                <div class="bmi-label">Your BMI</div>
+                                <div id="bmiValue" class="bmi-result">0.0</div>
+                                <div id="bmiStatus" class="bmi-status">-</div>
+                            </div>
+                            <div>
+                                <div class="bmi-label">Your TDEE</div>
+                                <div class="bmi-result"><span id="tdeeValue">0</span> <span class="tdee-unit">kcal/day</span></div>
+                                <div class="tdee-label">Maintenance Calories</div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </form>
             </div>
         </div>
     </section>
@@ -238,29 +241,29 @@
             </div>
         </div>
     </section>
-    <section class="testimonials fade-in" style="margin: 4rem 0; background: rgba(255, 51, 102, 0.02); padding: 4rem 0;">
+    <section class="testimonials fade-in testimonials-section">
         <div class="container">
-            <h2 style="text-align: center; margin-bottom: 3rem;">Success Stories</h2>
+            <h2 class="section-title-center">Success Stories</h2>
             <div class="horizontal-scroll-strip">
                 <div class="link-card testimonial-card">
-                    <div style="color: #FFD700; margin-bottom:1rem; font-size:1.2rem;">★★★★★</div>
-                    <p style="font-style: italic; font-size:1.05rem; color:var(--text-muted); line-height:1.6;">"The AI coach is insanely accurate. Combined with the 3D exercise models, my form has never been better. Down 15lbs!"</p>
-                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">- Jake M.</h4>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The AI coach is insanely accurate. Combined with the 3D exercise models, my form has never been better. Down 15lbs!"</p>
+                    <h4 class="testimonial-author">- Jake M.</h4>
                 </div>
                 <div class="link-card testimonial-card">
-                    <div style="color: #FFD700; margin-bottom:1rem; font-size:1.2rem;">★★★★★</div>
-                    <p style="font-style: italic; font-size:1.05rem; color:var(--text-muted); line-height:1.6;">"The 90-Day Challenge literally transformed my life. The daily meal tracker and workouts are seamless to use."</p>
-                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">- Sarah W.</h4>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"The 90-Day Challenge literally transformed my life. The daily meal tracker and workouts are seamless to use."</p>
+                    <h4 class="testimonial-author">- Sarah W.</h4>
                 </div>
                 <div class="link-card testimonial-card">
-                    <div style="color: #FFD700; margin-bottom:1rem; font-size:1.2rem;">★★★★★</div>
-                    <p style="font-style: italic; font-size:1.05rem; color:var(--text-muted); line-height:1.6;">"I signed up for Elite just for the overnight supplement shipping, but the personalized trainer sessions keep me here."</p>
-                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">- David L.</h4>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"I signed up for Elite just for the overnight supplement shipping, but the personalized trainer sessions keep me here."</p>
+                    <h4 class="testimonial-author">- David L.</h4>
                 </div>
                 <div class="link-card testimonial-card">
-                    <div style="color: #FFD700; margin-bottom:1rem; font-size:1.2rem;">★★★★★</div>
-                    <p style="font-style: italic; font-size:1.05rem; color:var(--text-muted); line-height:1.6;">"Cleanest, fastest, and most premium fitness app I have ever used. Not bloated with useless features."</p>
-                    <h4 style="margin-top: 1.5rem; color: var(--text-light);">- Emily R.</h4>
+                    <div class="stars">★★★★★</div>
+                    <p class="testimonial-text">"Cleanest, fastest, and most premium fitness app I have ever used. Not bloated with useless features."</p>
+                    <h4 class="testimonial-author">- Emily R.</h4>
                 </div>
             </div>
         </div>
@@ -294,7 +297,8 @@
                         <span class="footer-brand-name">FITVERSE</span>
                     </a>
                     <p class="footer-description">
-                        The ultimate next-generation fitness ecosystem. Forge your body with precision workouts, engineered diets, and elite coaching tools.
+                        The ultimate next-generation fitness ecosystem. Forge your body with precision workouts,
+                        engineered diets, and elite coaching tools.
                     </p>
                     <div class="footer-contact">
                         <span>📍 1200 Hypertrophy Blvd, Iron City, CA</span>
@@ -323,7 +327,7 @@
                 <div class="footer-newsletter-col">
                     <h4>Join the Elite Letter</h4>
                     <p>Get weekly workout protocols and diet hacks sent straight to your inbox.</p>
-                    <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Subscribed!');">
+                    <form class="newsletter-form" onsubmit="event.preventDefault(); showToast('Subscribed!');">
                         <input type="email" placeholder="Enter your email" required>
                         <button type="submit">Subscribe</button>
                     </form>
